@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+  <PersonList>
+    <Person id="0">
+      <name>John</name>
+      <gender>Man</gender>
+      <phone>0910123456</phone>
+      <email>123456@gmail.com</email>
+    </Person>
+    <Person id="1">
+      <name>Marry</name>
+      <gender>Woman</gender>
+      <phone>0910123456</phone>
+      <email>123456@gmail.com</email>
+    </Person>
+  </PersonList>
