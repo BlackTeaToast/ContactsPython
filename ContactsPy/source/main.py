@@ -93,7 +93,8 @@ while not exit:
     print "請選擇功能:"
     print "1.開啟檔案"
     print "2.建立新檔"
-    print "3.移除檔案"
+    print "3.編輯檔案"
+    print "4.移除檔案"
     print "4.離開"
     print "*********************"
     choice = raw_input("選擇代號:")
@@ -105,9 +106,12 @@ while not exit:
         creatFile()
 
     elif choice == "3":
-        removeFile()
+        editFile()
 
     elif choice == "4":
+        removeFile()
+
+    elif choice == "5":
         exit = True
 
 print "\n謝謝您使用!\n"
