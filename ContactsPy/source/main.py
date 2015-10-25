@@ -4,16 +4,17 @@ import os
 from lib.person import Person
 from lib.file import writeFile, readFile
 from lib.addperson import add
+from lib.delperson import remove
 from lib.view import view, viewAll
 from xml.dom import minidom
 
-def editFile(persons):
+def editFile(fileName, persons):
 
     exit = False
 
     while not exit:
         
-        print "歡迎使用通訊錄管理系統!"
+        print "目前使用檔案:" + fileName
         print "*********************"
         print "請選擇功能:"
         print "1.View"
@@ -53,7 +54,7 @@ def openFile():
         print (name + "檔案存在!\n")
         persons = readFile(name)
         
-        editFile(persons)
+        editFile(name, persons)
 
     else:
         
