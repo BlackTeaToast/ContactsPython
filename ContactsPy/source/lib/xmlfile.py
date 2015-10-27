@@ -51,10 +51,10 @@ def writeFile(fileName, persons):
         nodeText = doc.createTextNode(person.email)
         tempChild.appendChild(nodeText)
      
-    doc.writexml( open((fileName+'.xml'), 'w',
+    doc.writexml( open((fileName+".xml"), 'w'),
                    indent="  ",
                    addindent="  ",
-                   newl='\n'))
+                   newl='\n')
      
     doc.unlink()
 

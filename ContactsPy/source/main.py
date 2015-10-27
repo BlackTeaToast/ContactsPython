@@ -1,11 +1,8 @@
-#coding=utf-8
-
+#coding=big5
 import os
 from lib.person import Person
-from lib.file import writeFile, readFile
-from lib.addperson import add
-from lib.delperson import remove
-from lib.view import view, viewAll
+from lib.xmlfile import writeFile, readFile
+from lib.editfile import add, remove, view, viewAll, save
 from xml.dom import minidom
 
 def editFile(fileName, persons):
@@ -14,9 +11,9 @@ def editFile(fileName, persons):
 
     while not exit:
         
-        print "ç›®å‰ä½¿ç”¨æª”æ¡ˆ:" + fileName
+        print "¥Ø«e¨Ï¥ÎÀÉ®×:" + fileName
         print "*********************"
-        print "è«‹é¸æ“‡åŠŸèƒ½:"
+        print "½Ğ¿ï¾Ü¥\¯à:"
         print "1.View"
         print "2.View All"
         print "3.Add"
@@ -25,7 +22,7 @@ def editFile(fileName, persons):
         print "6.Exit"
         print "*********************"
         
-        choice = raw_input("é¸æ“‡ä»£è™Ÿ:")
+        choice = raw_input("¿ï¾Ü¥N¸¹: ")
         
         if choice == "1":
             view(persons)
@@ -40,50 +37,53 @@ def editFile(fileName, persons):
             remove(persons)
 
         elif choice == "5":
-            save(persons)
+            save(fileName, persons)
 
         elif choice == "6":
             exit = True
 
+        else:
+            print "¿é¤J¿ù»~! ½Ğ­«·s¿é¤J!"
+
 def openFile():
     
-    name = raw_input("è«‹è¼¸å…¥æª”æ¡ˆåç¨±:")
+    name = raw_input("½Ğ¿é¤JÀÉ®×¦WºÙ: ")
     
     if os.path.exists(name+".xml"):
         
-        print (name + "æª”æ¡ˆå­˜åœ¨!\n")
+        print (name + "ÀÉ®×¦s¦b!\n")
         persons = readFile(name)
         
         editFile(name, persons)
 
     else:
         
-        print "æª”æ¡ˆä¸å­˜åœ¨!\n"
+        print "ÀÉ®×¤£¦s¦b!\n"
 
 def creatFile():
     
-    name = raw_input("è«‹è¼¸å…¥æª”æ¡ˆåç¨±:")
+    name = raw_input("½Ğ¿é¤JÀÉ®×¦WºÙ: ")
     
     if not os.path.exists(name+".xml"):
 
         file = open(name+".xml","w")
-        print "å·²å»ºç«‹æ–°æª”æ¡ˆ\n"
+        print "¤w«Ø¥ß·sÀÉ®×" + name + "\n"
         file.close()
         
     else:
-        print "å»ºç«‹å¤±æ•—!æœ‰åŒåæª”æ¡ˆå­˜åœ¨!\n"
+        print "«Ø¥ß¥¢±Ñ!¦³¦P¦WÀÉ®×¦s¦b!\n"
 
 def removeFile():
 
-    name = raw_input("è«‹è¼¸å…¥æ¬²ç§»é™¤æª”æ¡ˆåç¨±:")
+    name = raw_input("½Ğ¿é¤J±ı²¾°£ÀÉ®×¦WºÙ: ")
     
     if os.path.exists(name+".xml"):
 
         os.remove(name)
-        print "ç§»é™¤æª”æ¡ˆæˆåŠŸ!\n"
+        print "²¾°£ÀÉ®× " + name + " ¦¨¥\!\n"
         
     else:
-        print "å¤±æ•—!æª”æ¡ˆä¸å­˜åœ¨!\n"
+        print "¥¢±Ñ!ÀÉ®×¤£¦s¦b!\n"
 
 # Main
 
@@ -91,15 +91,15 @@ exit = False
 
 while not exit:
     
-    print "æ­¡è¿ä½¿ç”¨é€šè¨ŠéŒ„ç®¡ç†ç³»çµ±!"
+    print "Åwªï¨Ï¥Î³q°T¿ıºŞ²z¨t²Î!"
     print "*********************"
-    print "è«‹é¸æ“‡åŠŸèƒ½:"
-    print "1.é–‹å•Ÿæª”æ¡ˆ"
-    print "2.å»ºç«‹æ–°æª”"
-    print "3.ç§»é™¤æª”æ¡ˆ"
-    print "4.é›¢é–‹"
+    print "½Ğ¿ï¾Ü¥\¯à:"
+    print "1.¶}±ÒÀÉ®×"
+    print "2.«Ø¥ß·sÀÉ"
+    print "3.²¾°£ÀÉ®×"
+    print "4.Â÷¶}"
     print "*********************"
-    choice = raw_input("é¸æ“‡ä»£è™Ÿ:")
+    choice = raw_input("¿ï¾Ü¥N¸¹: ")
 
     if choice == "1":
         openFile()
@@ -113,7 +113,10 @@ while not exit:
     elif choice == "4":
         exit = True
 
-print "\nè¬è¬æ‚¨ä½¿ç”¨!\n"
+    else:
+        print "¿é¤J¿ù»~! ½Ğ­«·s¿é¤J!"
+
+print "\nÁÂÁÂ±z¨Ï¥Î!\n"
 
 # Main End
 
