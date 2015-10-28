@@ -1,3 +1,5 @@
+#coding:big5
+
 class Person:
     def __init__(self, name, gender, phone, email):
         self.name = name
@@ -5,9 +7,6 @@ class Person:
         self.phone = phone
         self.email = email;
 
-    def hello(self):
-        print('Hello, ' + self.name)
-
     def __str__(self):
-        return 'Person({0}, {1}, {2}, {3})'.format(
+        return "名字:{0} 性別:{1} 電話:{2} Email:{3})".format(
             self.name, self.gender, self.phone, self.email)

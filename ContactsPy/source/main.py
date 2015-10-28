@@ -2,48 +2,8 @@
 import os
 from lib.person import Person
 from lib.xmlfile import writeFile, readFile
-from lib.editfile import add, remove, view, viewAll, save
+from lib.editfile import editFile, add, remove, view, viewAll, save
 from xml.dom import minidom
-
-def editFile(fileName, persons):
-
-    exit = False
-
-    while not exit:
-        
-        print "目前使用檔案:" + fileName
-        print "*********************"
-        print "請選擇功能:"
-        print "1.View"
-        print "2.View All"
-        print "3.Add"
-        print "4.Remove"
-        print "5.Save"
-        print "6.Exit"
-        print "*********************"
-        
-        choice = raw_input("選擇代號: ")
-        
-        if choice == "1":
-            view(persons)
-
-        elif choice == "2":
-            viewAll(persons)
-
-        elif choice == "3":
-            add(persons)
-
-        elif choice == "4":
-            remove(persons)
-
-        elif choice == "5":
-            save(fileName, persons)
-
-        elif choice == "6":
-            exit = True
-
-        else:
-            print "輸入錯誤! 請重新輸入!"
 
 def openFile():
     
@@ -97,7 +57,7 @@ while not exit:
     print "1.開啟檔案"
     print "2.建立新檔"
     print "3.移除檔案"
-    print "4.離開"
+    print "0.離開"
     print "*********************"
     choice = raw_input("選擇代號: ")
 
@@ -110,11 +70,11 @@ while not exit:
     elif choice == "3":
         removeFile()
 
-    elif choice == "4":
+    elif choice == "0":
         exit = True
 
     else:
-        print "輸入錯誤! 請重新輸入!"
+        print "輸入錯誤! 請重新輸入!\n"
 
 print "\n謝謝您使用!\n"
 
