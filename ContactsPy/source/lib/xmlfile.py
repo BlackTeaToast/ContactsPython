@@ -1,3 +1,4 @@
+#coding=big5
 from person import Person
 import xml.dom.minidom
 from xml.dom.minidom import Element, Text, Node, Document, parse
@@ -50,20 +51,25 @@ def writeFile(fileName, persons):
         # Write Text
         nodeText = doc.createTextNode(person.email)
         tempChild.appendChild(nodeText)
-     
-    doc.writexml( open((fileName+'.xml'), 'w',
+
+    # Write File 
+    doc.writexml( open((fileName+".xml"), 'w'),
                    indent="  ",
                    addindent="  ",
-                   newl='\n'))
+                   newl='\n')
      
     doc.unlink()
+
+    print "檔案寫入完成!"
 
 def readFile(fileName):
 
     persons = [];
-    
+
+    # Read File
     doc = parse(fileName + ".xml")
 
+    # Add person from file
     for node in doc.getElementsByTagName("Person"):
         persons.append(
             Person(node.getElementsByTagName("name")[0].firstChild.data,
